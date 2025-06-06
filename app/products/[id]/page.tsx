@@ -1,15 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Suspense } from 'react';
 import { getProductById } from '../../../utils/api';
-import LoadingSpinner from '../../../components/LoadingSpinner';
 import { notFound } from 'next/navigation';
 import AddToCartButton from '../../../components/AddToCartButton';
+import { Product } from '../../../types/product'; // Import Product type
 
 export const revalidate = 3600; // Revalidate every hour
 
 // This is now a Server Component
-async function ProductDetail({ product }: { product: any }) { // Simplified to receive product data
+async function ProductDetail({ product }: { product: Product }) { // Use Product type
   return (
     <div className="container mx-auto px-4 py-8">
       <Link

@@ -59,8 +59,14 @@ export default function Home() {
         setProducts(productData);
         setCategories(categoryData);
         setError(null);
-      } catch (err: any) {
-        setError('Failed to load products or categories.' + err.message);
+      } catch (err: unknown) {
+        let errorMessage = 'Failed to load products or categories.';
+        if (err instanceof Error) {
+          errorMessage += ' ' + err.message;
+        } else if (typeof err === 'string') {
+          errorMessage += ' ' + err;
+        }
+        setError(errorMessage);
         setProducts([]);
         setCategories([]);
       } finally {

@@ -2,13 +2,14 @@ import { render, screen } from '@testing-library/react';
 import ProductCard from './ProductCard';
 import { Product } from '../types/product';
 import '@testing-library/jest-dom';
+import React from 'react';
 
 // Mock the next/image component to avoid optimization errors in tests
 jest.mock('next/image', () => ({
   __esModule: true,
-  default: (props: any) => {
+  default: (props: React.ComponentProps<'img'>) => {
     // eslint-disable-next-line @next/next/no-img-element
-    return <img {...props} />;
+    return <img {...props} alt={props.alt || ''} />;
   },
 }));
 

@@ -3,7 +3,6 @@
 import { useState, useMemo } from 'react';
 import ProductGrid from './ProductGrid';
 import { Product } from '../types/product';
-import LoadingSpinner from './LoadingSpinner';
 
 interface ClientProductDisplayProps {
   initialProducts: Product[];
